@@ -23,11 +23,11 @@ const router = createBrowserRouter([
         element: <ProjectsPage />,
       },
     ],
-  },
+  }],
   {
     basename: '/Portfolio'
   }
-])
+)
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
