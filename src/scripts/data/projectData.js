@@ -1,3 +1,6 @@
+import techstackMobile from "/techstackMobile.png"
+import deepspeakMobile from "/deepspeakMobile.png"
+
 const projects = [
   {
     title: "Tech Stack",
@@ -16,7 +19,7 @@ const projects = [
       desktop:
         "https://github.com/DavidSemke/TechStack/raw/main/documentation" +
         "/index-page.png?raw=true",
-      mobile: "/techstackMobile.png",
+      mobile: techstackMobile,
     },
     description:
       "Tech Stack is a place for reading and writing blog posts for " +
@@ -45,7 +48,7 @@ const projects = [
       desktop:
         "https://github.com/DavidSemke/DeepSpeak/raw/main/documentation" +
         "/index-page.png?raw=true",
-      mobile: "/deepspeakMobile.png",
+      mobile: deepspeakMobile,
     },
     description:
       "DeepSpeak is a messaging app where users can enter rooms and chat " +
