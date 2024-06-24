@@ -1,0 +1,14 @@
+@use "../../globalSassVars/breakpoints" as bp;
+
+.indexPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+@media (max-width: bp.$sm) {
+  .indexPage {
+    font-size: 1.5rem;
+  }
+}

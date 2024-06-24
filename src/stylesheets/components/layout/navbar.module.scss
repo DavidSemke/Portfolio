@@ -1,0 +1,127 @@
+@use "../../globalSassVars/breakpoints" as bp;
+
+.navbar {
+  flex: 0.25;
+  min-height: 100%;
+  background-color: var(--bs-secondary-bg);
+  font-size: 1.2rem;
+}
+
+.stickyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+}
+
+.selfContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bs-secondary-border-subtle);
+}
+
+.labelledSelfPortrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selfPortrait {
+  width: 10rem;
+  border-radius: 50%;
+}
+
+.name {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.connectIconContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.connectIcon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bs-secondary-border-subtle);
+}
+
+@media (max-width: bp.$sm) {
+  .navbar {
+    width: 100%;
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: calc(bp.$sm + 1px)) and (max-width: bp.$lg) {
+  .navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+  }
+
+  .stickyContent {
+    flex-direction: row;
+    gap: 0;
+    padding: 0.5rem;
+  }
+
+  .selfContainer {
+    flex: 1;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-bottom: 0;
+    border-bottom: none;
+    border-right: 1px solid var(--bs-secondary-border-subtle);
+  }
+
+  .labelledSelfPortrait {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .selfPortrait {
+    width: 5rem;
+  }
+
+  .name {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+
+  .connectIconContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-right: 1rem;
+  }
+
+  .nav {
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
