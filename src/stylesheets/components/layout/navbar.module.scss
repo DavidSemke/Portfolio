@@ -74,6 +74,7 @@
 
 @media (min-width: calc(bp.$sm + 1px)) and (max-width: bp.$lg) {
   .navbar {
+    flex: 0;
     width: 100%;
     position: sticky;
     top: 0;
