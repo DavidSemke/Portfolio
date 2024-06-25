@@ -3,12 +3,12 @@ import Project from "../layout/Project"
 
 function ProjectsPage() {
   return (
-    <div className="page">
+    <main className="page">
       <h1>Projects</h1>
       {projects.map((project) => {
         return <Project key={project.title} {...project} />
       })}
-    </div>
+    </main>
   )
 }
 

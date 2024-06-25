@@ -15,7 +15,7 @@ function ErrorPage() {
   }
 
   return (
-    <div className="page">
+    <main className="page">
       <h1 className={styles.h1}>Oops!</h1>
       <p className={styles.intro}>Sorry, an error has occurred.</p>
       <p className={styles.errorMsg}>
@@ -24,7 +24,7 @@ function ErrorPage() {
       <Link to="/">
         <span className={styles.returnLink}>Return Home</span>
       </Link>
-    </div>
+    </main>
   )
 }
 
