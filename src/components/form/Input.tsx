@@ -32,7 +32,10 @@ export function Input({
     label: "font-semibold",
     input: clsx(
       'w-full',
-      ElementType
+      {
+        'input input-bordered input-accent': !asTextArea,
+        'textarea textarea-bordered textarea-accent': asTextArea
+      }
     )
   }
   const styles = attrsStyleMerge(attrs, defaultStyles)

@@ -16,6 +16,10 @@
         @apply min-w-[320px];
     }
 
+    main {
+        @apply w-full;
+    }
+
     h1 {
         @apply text-4xl sm:text-5xl md:text-6xl;
     }
@@ -26,6 +30,10 @@
 
     h3 {
         @apply text-2xl sm:text-3xl md:text-4xl;
+    }
+
+    textarea {
+        @apply resize-none;
     }
 }
 

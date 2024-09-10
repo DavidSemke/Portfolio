@@ -35,35 +35,45 @@ export default function ContactPage() {
     let formStateFeedback = null
 
     if (formState === 'SUCCESS') {
-      formStateFeedback = <p>
+      formStateFeedback = <p className="text-center text-success">
         Thank you for reaching out! I will get back to you shortly.
       </p>
     }
     else if (formState === 'ERROR') {
-      formStateFeedback = <p>
+      formStateFeedback = <p className="text-center text-error">
         Something went wrong! Please consider contacting me 
         using my email: david@semke.ca.
       </p>
     }
     else if (formState === 'PENDING') {
-      formStateFeedback = <span className="loading loading-infinity loading-lg"/>
+      formStateFeedback = <span className="loading loading-infinity loading-lg self-center"/>
     }
   
     return (
-      <main>
+      <main className="flex flex-col items-center gap-8">
         <h1>Contact Me</h1>
         <p>To get in touch, please fill out the form below or contact me at
-          <span className="font-semibold"> david@semke.ca</span>.
+          <span className="font-semibold text-lg"> david@semke.ca</span>.
         </p>
         <form 
           onSubmit={onSubmit}
-          className="flex flex-col gap-4 items-center"
+          className="flex flex-col gap-6 w-full"
         >
-          <div className="flex gap-4">
-            <Input name='name'/>
+          <div className="flex gap-8">
+            <Input 
+              name='name'
+              attrs={{
+                root: {
+                  className: 'grow'
+                }
+              }}
+            />
             <Input 
               name='email' 
               attrs={{
+                root: {
+                  className: 'grow'
+                },
                 input: {
                   type: 'email'
                 }
@@ -86,11 +96,12 @@ export default function ContactPage() {
                 className: 'hidden'
               },
               input: {
-                type: 'checkbox'
+                type: 'checkbox',
+                required: false
               }
             }}
           />
-          <button type='submit' className="btn btn-primary">
+          <button type='submit' className="btn btn-primary px-12 self-center">
             Submit
           </button>
           {formStateFeedback}
