@@ -12,7 +12,7 @@ export default [
       "Tailwind",
       "TypeScript",
       "PostgreSQL",
-      "Auth.js"
+      "Auth.js",
     ],
     deployment: "https://memescape-lj1zk54es-davsems-projects.vercel.app/",
     thumbnails: {
@@ -22,11 +22,11 @@ export default [
       mobile: memescapeMobile,
     },
     description:
-      "Memescape is a Next.js app for finding, creating, and sharing memes. "
-      + "The React + Tailwind frontend is fully responsive and was developed using mobile-first design. "
-      + "The backend consists of a PostgreSQL database and an API abstracted with the use of "
-      + "Next.js server actions. Users can search for, bookmark, create, and share memes, "
-      + "where some actions require authentication and authorization via Auth.js."
+      "Memescape is a Next.js app for finding, creating, and sharing memes. " +
+      "The React + Tailwind frontend is fully responsive and was developed using mobile-first design. " +
+      "The backend consists of a PostgreSQL database and an API abstracted with the use of " +
+      "Next.js server actions. Users can search for, bookmark, create, and share memes, " +
+      "where some actions require authentication and authorization via Auth.js.",
   },
   {
     title: "DeepSpeak",
@@ -39,7 +39,7 @@ export default [
       "MongoDB",
       "Jest",
       "REST API",
-      "Socket.io"
+      "Socket.io",
     ],
     deployment: "https://davidsemke.github.io/DeepSpeak/",
     thumbnails: {
@@ -85,5 +85,5 @@ export default [
       "used for thorough unit tests on backend routes. It is currently being " +
       "used to host some blog posts of my own, which talk about my approach " +
       "to programming with different technologies (feel free to check them out).",
-  }
+  },
 ]

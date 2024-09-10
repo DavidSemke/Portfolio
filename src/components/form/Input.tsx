@@ -1,4 +1,4 @@
-import { attrsStyleMerge } from '../utils'
+import { attrsStyleMerge } from "../utils"
 import clsx from "clsx"
 
 type InputProps = {
@@ -13,16 +13,16 @@ type InputProps = {
   }
 }
 
-export function Input({ 
-  name, 
+export function Input({
+  name,
   label,
-  asTextArea=false,
-  errors = [], 
-  attrs = {} 
+  asTextArea = false,
+  errors = [],
+  attrs = {},
 }: InputProps) {
   const hide = attrs.input?.type === "hidden"
   const asRow = ["checkbox", "radio"].includes(attrs.input?.type)
-  const ElementType = asTextArea ? 'textarea' : 'input'
+  const ElementType = asTextArea ? "textarea" : "input"
   const defaultStyles = {
     root: clsx("flex", {
       "items-center gap-4": asRow,
@@ -30,13 +30,10 @@ export function Input({
       hidden: hide,
     }),
     label: "font-semibold",
-    input: clsx(
-      'w-full',
-      {
-        'input input-bordered input-accent': !asTextArea,
-        'textarea textarea-bordered textarea-accent': asTextArea
-      }
-    )
+    input: clsx("w-full", {
+      "input input-bordered input-accent": !asTextArea,
+      "textarea textarea-bordered textarea-accent": asTextArea,
+    }),
   }
   const styles = attrsStyleMerge(attrs, defaultStyles)
   label =
@@ -47,16 +44,12 @@ export function Input({
         return word[0].toUpperCase() + word.slice(1)
       })
       .join(" ")
-  
+
   return (
     <>
       <div {...attrs.root} className={styles.root}>
         {label && (
-          <label 
-            {...attrs.label}
-            htmlFor={name} 
-            className={styles.label}
-          >
+          <label {...attrs.label} htmlFor={name} className={styles.label}>
             {label}
           </label>
         )}

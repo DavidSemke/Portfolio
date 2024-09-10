@@ -8,29 +8,31 @@ import ProjectsPage from "./components/page/ProjectsPage"
 import ContactPage from "./components/page/ContactPage"
 import "./globals.css"
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <IndexPage />,
+        },
+        {
+          path: "projects",
+          element: <ProjectsPage />,
+        },
+        {
+          path: "contact",
+          element: <ContactPage />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <IndexPage />,
-      },
-      {
-        path: "projects",
-        element: <ProjectsPage />,
-      },
-      {
-        path: "contact",
-        element: <ContactPage />,
-      }
-    ],
-  }],
-  {
-    basename: '/Portfolio'
-  }
+    basename: "/Portfolio",
+  },
 )
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

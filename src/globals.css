@@ -3,44 +3,47 @@
 @tailwind utilities;
 
 :root {
-    /* lg refers to the lg breakpt */
-    --navbar-width-lg: 16rem;
+  /* lg refers to the lg breakpt */
+  --navbar-width-lg: 16rem;
 }
 
 @layer base {
-    html, body, #root {
-        @apply min-h-screen;
-    }
+  html,
+  body,
+  #root {
+    @apply min-h-screen;
+  }
 
-    body {
-        @apply min-w-[320px];
-    }
+  body {
+    @apply min-w-[320px];
+  }
 
-    main {
-        @apply w-full;
-    }
+  main {
+    @apply w-full;
+  }
 
-    h1 {
-        @apply text-4xl sm:text-5xl md:text-6xl;
-    }
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
 
-    h2 {
-        @apply text-3xl sm:text-4xl md:text-5xl;
-    }
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
 
-    h3 {
-        @apply text-2xl sm:text-3xl md:text-4xl;
-    }
+  h3 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
 
-    textarea {
-        @apply resize-none;
-    }
+  textarea {
+    @apply resize-none;
+  }
 }
 
 @layer components {
-    .link {
-        @apply no-underline text-secondary hover:text-primary;
-    }
+  .link {
+    @apply text-secondary no-underline hover:text-primary;
+  }
 }
 
-@layer utilities {}
+@layer utilities {
+}
