@@ -1,9 +1,26 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import selfPortrait from "/selfPortrait.jpeg"
 import githubIcon from "/githubIcon.png"
 import linkedinIcon from "/linkedinIcon.png"
+import clsx from "clsx"
 
 export default function Navbar() {
+  const { pathname } = useLocation()
+  const links = [
+    {
+      title: 'Home',
+      url: '/'
+    },
+    {
+      title: 'Projects',
+      url: '/projects'
+    },
+    {
+      title: 'Contact Me',
+      url: '/contact'
+    }
+  ]
+
   return (
     <section className='shrink-0 bg-base-300 w-full text-xl sm:sticky sm:top-0 lg:w-[--navbar-width-lg]'>
       <div className='flex flex-col gap-4 p-4 sm:flex-row sm:gap-0 sm:p-2 lg:flex-col lg:p-4 lg:gap-4 lg:sticky lg:top-0'>
@@ -25,9 +42,16 @@ export default function Navbar() {
           </div>
         </section>
         <nav className="flex justify-center items-start gap-4 pb-4 border-b-2 border-accent sm:grow sm:items-center sm:pb-0 sm:border-b-0 lg:flex-col lg:gap-0 lg:items-start">
-          <Link to={"/"} className="link">Home</Link>
-          <Link to={"/projects"} className="link">Projects</Link>
-          <Link to={"/contact"} className="link">Contact Me</Link>
+          {
+            links.map(link => (
+              <Link key={link.title} to={link.url} className={clsx(
+                "link",
+                {
+                  'underline': link.url === pathname
+                }
+              )}>{link.title}</Link>
+            ))
+          }
         </nav>
       </div>
     </section>
