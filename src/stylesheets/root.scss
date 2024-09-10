@@ -42,11 +42,18 @@ h3 {
   font-size: 1.5rem;
 }
 
+label {
+  font-weight: 600;
+}
+
+textarea {
+  resize: none;
+}
+
 #root {
   width: 100%;
 }
 
-.page {
-  flex: 1;
-  padding: 2rem;
+.gone {
+  display: none;
 }

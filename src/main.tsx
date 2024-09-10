@@ -1,12 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import App from "./components/layout/App.jsx"
-import ErrorPage from "./components/page/ErrorPage.jsx"
-import IndexPage from "./components/page/IndexPage.jsx"
-import ProjectsPage from "./components/page/ProjectsPage.jsx"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "../stylesheets/root.scss"
+import App from "./components/App"
+import ErrorPage from "./components/page/ErrorPage"
+import IndexPage from "./components/page/IndexPage"
+import ProjectsPage from "./components/page/ProjectsPage"
+import ContactPage from "./components/page/ContactPage"
+import "./globals.css"
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
         path: "projects",
         element: <ProjectsPage />,
       },
+      {
+        path: "contact",
+        element: <ContactPage />,
+      }
     ],
   }],
   {
@@ -29,7 +33,7 @@ const router = createBrowserRouter([
   }
 )
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,

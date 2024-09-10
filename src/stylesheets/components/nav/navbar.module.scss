@@ -1,7 +1,7 @@
 @use "../../globalSassVars/breakpoints" as bp;
 
 .navbar {
-  flex: 0.25;
+  width: 16rem;
   min-height: 100%;
   background-color: var(--bs-secondary-bg);
   font-size: 1.2rem;

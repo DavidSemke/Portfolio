@@ -2,7 +2,7 @@ import techstackMobile from "/techstackMobile.png"
 import deepspeakMobile from "/deepspeakMobile.png"
 import memescapeMobile from "/memescapeMobile.png"
 
-const projects = [
+export default [
   {
     title: "Memescape",
     tech: [
@@ -87,5 +87,3 @@ const projects = [
       "to programming with different technologies (feel free to check them out).",
   }
 ]
-
-export default projects

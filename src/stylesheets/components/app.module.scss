@@ -1,0 +1,19 @@
+@use "../globalSassVars/breakpoints" as bp;
+
+.app {
+  display: flex;
+  min-height: 100%;
+}
+
+.page {
+  flex: 0.8;
+  padding: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: bp.$lg) {
+  .app {
+    flex-direction: column;
+  }
+}
