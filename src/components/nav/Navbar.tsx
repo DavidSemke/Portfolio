@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <section className="w-full shrink-0 bg-base-300 text-xl sm:sticky sm:top-0 lg:w-[--navbar-width-lg]">
       <div className="flex flex-col gap-4 p-4 sm:flex-row sm:gap-0 sm:p-2 lg:sticky lg:top-0 lg:flex-col lg:gap-4 lg:p-4">
-        <section className="flex flex-col items-center gap-2 border-b-2 border-accent pb-4 sm:grow sm:flex-row-reverse sm:justify-center sm:border-b-0 sm:border-e-2 sm:pb-0 lg:flex-col lg:border-b-2 lg:border-e-0 lg:pb-4">
+        <section className="flex flex-col items-center gap-2 border-b-2 border-accent pb-4 sm:grow sm:flex-row-reverse sm:justify-center sm:border-b-0 sm:border-r-2 sm:pb-0 lg:flex-col lg:border-b-2 lg:border-r-0 lg:pb-4">
           <div className="flex flex-col items-center text-2xl sm:flex-row sm:gap-2 sm:text-xl lg:flex-col">
             <img
               src={selfPortrait}
