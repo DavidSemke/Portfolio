@@ -13,7 +13,7 @@ type InputProps = {
   }
 }
 
-export function Input({
+export default function Input({
   name,
   label,
   asTextArea = false,

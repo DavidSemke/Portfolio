@@ -14,13 +14,13 @@ export default function ErrorPage() {
   }
 
   return (
-    <main>
-      <h1 className="mt-8 text-left text-7xl font-light">Oops!</h1>
+    <main className="flex flex-col gap-4 items-center justify-center min-h-screen pb-20">
+      <h1>Oops!</h1>
       <p className="text-4xl">Sorry, an error has occurred.</p>
       <p className="text-2xl">
         <i>{msg}</i>
       </p>
-      <Link to="/">
+      <Link to="/" className="link">
         <span className="text-2xl">Return Home</span>
       </Link>
     </main>

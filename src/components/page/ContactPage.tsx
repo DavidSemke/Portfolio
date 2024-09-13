@@ -1,5 +1,5 @@
 import { FormEventHandler, useState } from "react"
-import { Input } from "../form/Input"
+import Input from "../form/Input"
 
 export default function ContactPage() {
   const [formState, setFormState] = useState<

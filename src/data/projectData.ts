@@ -1,6 +1,6 @@
-import techstackMobile from "/techstackMobile.png"
-import deepspeakMobile from "/deepspeakMobile.png"
-import memescapeMobile from "/memescapeMobile.png"
+import techstackMobile from "/projects/techstackMobile.png"
+import deepspeakMobile from "/projects/deepspeakMobile.png"
+import memescapeMobile from "/projects/memescapeMobile.png"
 
 export default [
   {

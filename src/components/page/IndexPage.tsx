@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import RoundedCarousel from "../carousel/RoundedCarousel"
+import carouselCardData from '../../data/indexData'
 
 export default function IndexPage() {
   return (
@@ -26,6 +28,9 @@ export default function IndexPage() {
         </a>
         !
       </h2>
+      <RoundedCarousel 
+        cardData={carouselCardData}
+      />
     </main>
   )
 }
