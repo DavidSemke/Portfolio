@@ -7,16 +7,16 @@ export default {
       keyframes: {
         typing: {
           "0%": { width: "0" },
-          "100%": { width: "100%" }
+          "100%": { width: "100%" },
         },
         blinkCaret: {
-          "50%": { borderColor: "transparent" }
+          "50%": { borderColor: "transparent" },
         },
         hideCaretAfter: {
-          "100%": { borderColor: "transparent" }
+          "100%": { borderColor: "transparent" },
         },
         hideContentBefore: {
-          "0%": { borderColor: "transparent", width: '0' }
+          "0%": { borderColor: "transparent", width: "0" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
@@ -24,9 +24,11 @@ export default {
         },
       },
       animation: {
-        typingLine0: "typing 3.5s steps(40), blinkCaret 1s step-end infinite, hideCaretAfter 3.5s step-end forwards",
-        typingLine1: "typing 3.5s steps(40) 4s, blinkCaret 1s step-end 4s infinite, hideContentBefore 4s step-end forwards",
-        fadeIn: "fadeIn 0.5s forwards"
+        typingLine0:
+          "typing 3.5s steps(40), blinkCaret 1s step-end infinite, hideCaretAfter 3.5s step-end forwards",
+        typingLine1:
+          "typing 3.5s steps(40) 4s, blinkCaret 1s step-end 4s infinite, hideContentBefore 4s step-end forwards",
+        fadeIn: "fadeIn 0.5s forwards",
       },
     },
   },

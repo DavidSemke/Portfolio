@@ -14,7 +14,7 @@ export default function ErrorPage() {
   }
 
   return (
-    <main className="flex flex-col gap-4 items-center justify-center min-h-screen pb-20">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4 pb-20">
       <h1>Oops!</h1>
       <p className="text-4xl">Sorry, an error has occurred.</p>
       <p className="text-2xl">
