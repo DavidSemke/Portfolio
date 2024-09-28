@@ -6,13 +6,15 @@ export default [
   {
     title: "Memescape",
     tech: [
-      "Vercel",
       "Next.js",
       "React.js",
+      "Auth.js",
       "Tailwind",
       "TypeScript",
       "PostgreSQL",
-      "Auth.js",
+      "Prisma ORM",
+      "Jest",
+      "React Testing Library"
     ],
     deployment: "https://memescape-lj1zk54es-davsems-projects.vercel.app/",
     thumbnails: {
@@ -26,7 +28,8 @@ export default [
       "The React + Tailwind frontend is fully responsive and was developed using mobile-first design. " +
       "The backend consists of a PostgreSQL database and an API abstracted with the use of " +
       "Next.js server actions. Users can search for, bookmark, create, and share memes, " +
-      "where some actions require authentication and authorization via Auth.js.",
+      "where some actions require authentication and authorization via Auth.js. " +
+      "Unit tests are written using Jest and the React Testing Library.",
   },
   {
     title: "DeepSpeak",
