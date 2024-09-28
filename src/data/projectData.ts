@@ -16,7 +16,7 @@ export default [
       "Jest",
       "React Testing Library"
     ],
-    deployment: "https://memescape-lj1zk54es-davsems-projects.vercel.app/",
+    deployment: "https://memescape.vercel.app/",
     thumbnails: {
       desktop:
         "https://github.com/DavidSemke/Memescape/raw/main/documentation" +
