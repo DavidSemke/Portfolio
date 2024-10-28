@@ -6,7 +6,7 @@
   "homepage": "https://davidsemke.github.io/Portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b & vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint --report-unused-disable-directives",
     "preview": "vite preview",
     "preinstall": "npx only-allow pnpm"
