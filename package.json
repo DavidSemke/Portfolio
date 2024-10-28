@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "tsc -b & vite build",
     "lint": "eslint --report-unused-disable-directives",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
