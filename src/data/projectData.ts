@@ -1,8 +1,38 @@
 import techstackMobile from "/projects/techstackMobile.png"
 import deepspeakMobile from "/projects/deepspeakMobile.png"
 import memescapeMobile from "/projects/memescapeMobile.png"
+import flashmodeMobile from "/projects/flashmodeMobile.png"
 
 export default [
+  {
+    title: "FlashMode",
+    tech: [
+      "Django",
+      "django-allauth",
+      "Django Cotton",
+      "HTMX",
+      "Alpine.js",
+      "Tailwind",
+      "DaisyUI",
+      "PostgreSQL",
+      "Factory Boy",
+      "unittest"
+    ],
+    deployment: "https://flashmode.fly.dev/",
+    thumbnails: {
+      desktop:
+        "https://github.com/DavidSemke/FlashMode/raw/main/documentation" +
+        "/index-page.png?raw=true",
+      mobile: flashmodeMobile,
+    },
+    description:
+      "FlashMode is a Django app that offers user-made flash card decks for studying. " +
+      "Django templates use DaisyUI + Tailwind for styling and HTMX + Alpine.js for AJAX and interactivity. " +
+      "The backend uses a PostgreSQL database and authentication is handled by django-allauth. " +
+      "Users can search for, collect, create, and share flash card decks, as well as track their progress " +
+      "with statistics. " +
+      "Unit tests are written using unittest and Factory Boy is used for test data generation.",
+  },
   {
     title: "Memescape",
     tech: [
