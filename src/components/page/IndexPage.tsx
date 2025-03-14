@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router"
 import RoundedCarousel from "../carousel/RoundedCarousel"
 import carouselCardData from "../../data/indexData"
 

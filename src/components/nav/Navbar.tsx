@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router"
 import selfPortrait from "/selfPortrait.jpeg"
 import githubIcon from "/githubIcon.png"
 import linkedinIcon from "/linkedinIcon.png"
