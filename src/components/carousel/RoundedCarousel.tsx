@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid"
 import { useState } from "react"
 import RoundedCarouselCard, { CardData } from "./RoundedCarouselCard"
+import clsx from "clsx"
 
 type RoundedCarouselProps = {
   cardData: CardData[]
@@ -10,7 +11,7 @@ type RoundedCarouselProps = {
 
 export default function RoundedCarousel({
   cardData,
-  faceCardWidthRem = 6,
+  faceCardWidthRem = 5,
   minCardWidthRem = 1,
 }: RoundedCarouselProps) {
   // State faceIndex refers to the index of the face card
@@ -160,8 +161,11 @@ export default function RoundedCarousel({
   ]
 
   return (
-    <div className="flex w-full flex-col gap-4">
-      <div className="relative h-60 grow">
+    <div className="flex w-full flex-col items-center gap-4">
+      <div className={clsx(
+        "relative h-60 w-full",
+        { "min-w-72": faceCardWidthRem > 4 }
+      )}>
         {cards}
         <div
           style={{

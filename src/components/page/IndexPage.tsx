@@ -1,8 +1,24 @@
 import { Link } from "react-router"
 import RoundedCarousel from "../carousel/RoundedCarousel"
 import carouselCardData from "../../data/indexData"
+import { useState, useEffect } from "react";
 
 export default function IndexPage() {
+  const [carouselFaceCardWidthRem, setCarouselFaceCardWidthRem] = useState<number>(5);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 640px)");
+
+    const updateFaceCardWidth = () => {
+      setCarouselFaceCardWidthRem(mediaQuery.matches ? 6 : 5)
+    };
+
+    updateFaceCardWidth()
+    mediaQuery.addEventListener("change", updateFaceCardWidth)
+
+    return () => mediaQuery.removeEventListener("change", updateFaceCardWidth)
+  }, []);
+
   return (
     <main className="flex flex-col items-center justify-center gap-8 pb-20">
       <h1 className="flex flex-col items-center bg-gradient-to-r from-primary to-secondary bg-clip-text py-4 text-center text-transparent">
@@ -24,7 +40,7 @@ export default function IndexPage() {
         </a>
         !
       </h2>
-      <RoundedCarousel cardData={carouselCardData} />
+      <RoundedCarousel cardData={carouselCardData} faceCardWidthRem={carouselFaceCardWidthRem} />
     </main>
   )
 }
