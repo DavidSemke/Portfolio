@@ -1,4 +1,5 @@
 import cssIcon from "/index/cssIcon.png"
+import djangoIcon from "/index/djangoIcon.png"
 import expressjsIcon from "/index/expressjsIcon.png"
 import gitIcon from "/index/gitIcon.png"
 import htmlIcon from "/index/htmlIcon.png"
@@ -6,6 +7,7 @@ import jsIcon from "/index/jsIcon.png"
 import nextjsIcon from "/index/nextjsIcon.png"
 import nodejsIcon from "/index/nodejsIcon.png"
 import nosqlIcon from "/index/nosqlIcon.png"
+import pythonIcon from "/index/pythonIcon.png"
 import reactjsIcon from "/index/reactjsIcon.png"
 import sassIcon from "/index/sassIcon.png"
 import sqlIcon from "/index/sqlIcon.png"
@@ -17,6 +19,13 @@ export default [
     image: {
       src: cssIcon,
       alt: "CSS Logo",
+    },
+  },
+  {
+    title: "Django",
+    image: {
+      src: djangoIcon,
+      alt: "Django Logo",
     },
   },
   {
@@ -66,6 +75,13 @@ export default [
     image: {
       src: nosqlIcon,
       alt: "NoSQL Logo",
+    },
+  },
+  {
+    title: "Python",
+    image: {
+      src: pythonIcon,
+      alt: "Python Logo",
     },
   },
   {
