@@ -82,9 +82,10 @@ export default function RoundedCarousel({
     // For the first quarter left/right of the face card, apply
     // increasing offsets.
     if (quarterXOffsetPercentageIndex < quarterXOffsetPercentages.length) {
-      xOffsetRem +=
+      xOffsetRem += (
         (widthRem + 1) *
         quarterXOffsetPercentages[quarterXOffsetPercentageIndex]
+      )
       quarterXOffsets.push(xOffsetRem)
       quarterXOffsetIndex += 1
       quarterXOffsetPercentageIndex += 1
@@ -93,10 +94,11 @@ export default function RoundedCarousel({
     // (i.e. prior offsets used in first quarter).
     else {
       quarterXOffsetIndex -= 1
-      // If quarter count is odd, the second quarter of the half
-      // will have an even count.
-      // Therefore, skip the card halved by both quarters.
-      if (quarterXOffsets.length % 2 === 1) {
+      // If halfCount is odd, each half has a center card.
+      // The offset of a center card is not copied by any other card
+      // in its half, so the offset should be discarded.
+      // This if statement should only be true once.
+      if (quarterXOffsets.length * 2 > halfCount) {
         quarterXOffsets.pop()
         quarterXOffsetIndex -= 1
       }
