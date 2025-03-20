@@ -16,39 +16,33 @@ export default function RoundedCarousel({
 }: RoundedCarouselProps) {
   // State faceIndex refers to the index of the face card
   const [faceIndex, setFaceIndex] = useState<number>(0)
-
+  
   const cardCount = cardData.length
 
-  // Count the num of cards positioned to the left/right of the
-  // face card
-  let halfCount = Math.floor(cardCount / 2)
-
-  // Do not count the card directly behind the face card when card
-  // count is even
-  if (cardCount % 2 === 0) {
-    halfCount -= 1
-  }
-
-  // There is a limit on how small a card can be.
-  // Ensure that the current half count does not violate the limit.
-  halfCount = Math.min(halfCount, faceCardWidthRem - minCardWidthRem)
-  // If half count is odd, include center card in count
+  // The half count is the num of cards that can be positioned to the
+  // left/right of the face card, ignoring the rear card when the card 
+  // count is even. It is the min of:
+  // 1 - The max possible half count.
+  // 2 - The number of unique widths available for cards in the half.
+  const halfCount = Math.min(
+    Math.ceil(cardCount / 2 - 1), 
+    faceCardWidthRem - minCardWidthRem
+  )
+  // If half count is odd, include half center card in quarter count.
   const quarterCount = Math.ceil(halfCount / 2)
-  const quarterXOffsetPercentages = []
-  let curve = 1
-
+  const quarterXOffsetCurves = [1]
+  
   // The first quarter of cards left/right of the face card receive
   // increasing offsets.
   // The offset is the added width of all cards between the current
-  // card and the face card, including the face card's width,
-  // where each width (except the face card's) is multiplied by its
-  // corresponding curve value, which has range 0-1.
-  // These curve values are stored in quarterXOffsetPercentages,
+  // card and the face card (including the face card), where each width 
+  // (except the face card's) is multiplied by its corresponding curve
+  // value of range 0-1.
+  // These curve values are stored in quarterXOffsetCurves,
   // where the curve value at index 0 corresponds to the first
   // card in either quarter (left/right of face card).
-  for (let i = 0; i < quarterCount; i++) {
-    quarterXOffsetPercentages.push(curve)
-    curve = (quarterCount - i - 1) / quarterCount
+  for (let i = 1; i < quarterCount; i++) {
+    quarterXOffsetCurves.push((quarterCount - i) / quarterCount)
   }
 
   let leftOfFaceIndex = circularIndexDecrement(faceIndex, cardCount)
@@ -61,14 +55,14 @@ export default function RoundedCarousel({
   let yOffsetRem = 1
   // Define rate at which y offset increases.
   let yOffsetIncrement = 4
-  let quarterXOffsetPercentageIndex = 0
   // Store x offsets for first quarter left/right of face card.
   const quarterXOffsets = []
-  let quarterXOffsetIndex = 0
   // Define card z-index.
   // Face card has z-index === cardCount.
-  // Cards immediately left/right have z-index === cardCount - 1...
+  // Cards immediately left/right have z-index of cardCount - 1.
   let zIndex = cardCount - 1
+  // halfIndex === num of while loop iterations
+  let halfIndex = 0
 
   // No more cards are rendered if
   // 1 - The left and right indexes equal each other.
@@ -81,40 +75,41 @@ export default function RoundedCarousel({
   ) {
     // For the first quarter left/right of the face card, apply
     // increasing offsets.
-    if (quarterXOffsetPercentageIndex < quarterXOffsetPercentages.length) {
+    if (halfIndex < quarterXOffsetCurves.length) {
       xOffsetRem += (
         (widthRem + 1) *
-        quarterXOffsetPercentages[quarterXOffsetPercentageIndex]
+        quarterXOffsetCurves[halfIndex]
       )
       quarterXOffsets.push(xOffsetRem)
-      quarterXOffsetIndex += 1
-      quarterXOffsetPercentageIndex += 1
     }
     // The second quarter has been reached. Use decreasing offsets
     // (i.e. prior offsets used in first quarter).
     else {
-      quarterXOffsetIndex -= 1
-      // If halfCount is odd, each half has a center card.
-      // The offset of a center card is not copied by any other card
-      // in its half, so the offset should be discarded.
-      // This if statement should only be true once.
-      if (quarterXOffsets.length * 2 > halfCount) {
+      // halfIndex === quarterCount when the second quarter
+      // of each half is started.
+      // In this case, the last X offset should be discarded only if
+      // the half count is odd.
+      // This is because an odd half has a center card whose offset 
+      // is not copied by another card in its half.
+      if (halfIndex !== quarterCount || halfCount % 2 === 1) {
         quarterXOffsets.pop()
-        quarterXOffsetIndex -= 1
       }
 
-      xOffsetRem = quarterXOffsets[quarterXOffsetIndex]
+      xOffsetRem = quarterXOffsets[quarterXOffsets.length - 1]
     }
 
     const showTitle = faceCardWidthRem - widthRem < 2
+    const widthPx = widthRem * 16
+    const xOffsetPx = xOffsetRem * 16 * 2
+    const yOffsetPx = yOffsetRem * 16
     const leftCard = cardData[leftOfFaceIndex]
     leftOfFaceCards.push(
       <RoundedCarouselCard
         key={leftCard.title}
         title={leftCard.title}
         image={leftCard.image}
-        width={widthRem * 16}
-        offset={{ x: -(xOffsetRem * 16 * 2), y: -(yOffsetRem * 16) }}
+        width={widthPx}
+        offset={{ x: -xOffsetPx, y: -yOffsetPx }}
         zIndex={zIndex}
         showTitle={showTitle}
       />,
@@ -125,8 +120,8 @@ export default function RoundedCarousel({
         key={rightCard.title}
         title={rightCard.title}
         image={rightCard.image}
-        width={widthRem * 16}
-        offset={{ x: xOffsetRem * 16 * 2, y: -(yOffsetRem * 16) }}
+        width={widthPx}
+        offset={{ x: xOffsetPx, y: -yOffsetPx }}
         zIndex={zIndex}
         showTitle={showTitle}
       />,
@@ -144,6 +139,7 @@ export default function RoundedCarousel({
     }
 
     zIndex -= 1
+    halfIndex += 1
   }
 
   const faceCard = cardData[faceIndex]
