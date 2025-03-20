@@ -51,12 +51,11 @@ export default function RoundedCarousel({
   const rightOfFaceCards = []
   // Define card width and offsets in rem.
   let widthRem = faceCardWidthRem - 1
-  let xOffsetRem = 0
+  // Store x offsets for first quarter left/right of face card.
+  const quarterXOffsetRems: number[] = []
   let yOffsetRem = 1
   // Define rate at which y offset increases.
   let yOffsetIncrement = 4
-  // Store x offsets for first quarter left/right of face card.
-  const quarterXOffsets = []
   // Define card z-index.
   // Face card has z-index === cardCount.
   // Cards immediately left/right have z-index of cardCount - 1.
@@ -76,31 +75,30 @@ export default function RoundedCarousel({
     // For the first quarter left/right of the face card, apply
     // increasing offsets.
     if (halfIndex < quarterXOffsetCurves.length) {
-      xOffsetRem += (
-        (widthRem + 1) *
-        quarterXOffsetCurves[halfIndex]
+      quarterXOffsetRems.push(
+        (widthRem + 1)
+        * quarterXOffsetCurves[halfIndex]
+        + (
+          quarterXOffsetRems.length 
+          && quarterXOffsetRems[quarterXOffsetRems.length - 1]
+        )
       )
-      quarterXOffsets.push(xOffsetRem)
     }
-    // The second quarter has been reached. Use decreasing offsets
-    // (i.e. prior offsets used in first quarter).
-    else {
-      // halfIndex === quarterCount when the second quarter
-      // of each half is started.
-      // In this case, the last X offset should be discarded only if
-      // the half count is odd.
-      // This is because an odd half has a center card whose offset 
-      // is not copied by another card in its half.
-      if (halfIndex !== quarterCount || halfCount % 2 === 1) {
-        quarterXOffsets.pop()
-      }
-
-      xOffsetRem = quarterXOffsets[quarterXOffsets.length - 1]
+    // For the second quarter left/right of the face card, apply
+    // decreasing offsets.
+    // halfIndex === quarterCount when the second quarter
+    // of each half is started.
+    // In this case, the last X offset should be discarded only if
+    // the half count is odd.
+    // This is because an odd half has a center card whose offset 
+    // is not copied by another card in its half.
+    else if (halfIndex !== quarterCount || halfCount % 2 === 1) {
+      quarterXOffsetRems.pop()
     }
 
     const showTitle = faceCardWidthRem - widthRem < 2
     const widthPx = widthRem * 16
-    const xOffsetPx = xOffsetRem * 16 * 2
+    const xOffsetPx = quarterXOffsetRems[quarterXOffsetRems.length - 1] * 16 * 2
     const yOffsetPx = yOffsetRem * 16
     const leftCard = cardData[leftOfFaceIndex]
     leftOfFaceCards.push(
