@@ -173,14 +173,17 @@ export default function RoundedCarousel({
     <div className="flex w-full flex-col items-center gap-4">
       <div
         style={{
-          minWidth: `${(maxXOffsetRem + (quarterCardWidthRem / 2) + 1) * 2}rem`
+          minWidth: `${Math.max(
+            (maxXOffsetRem + (quarterCardWidthRem / 2) + 1) * 2, 
+            faceCardWidthRem + 1
+          )}rem`
         }}
         className="relative h-60"
       >
         {cards}
         <div
           style={{
-            bottom: `${yOffsetRem}rem`,
+            bottom: `${Math.max(yOffsetRem, faceCardWidthRem + 4)}rem`,
           }}
           className="absolute left-0 right-0 m-auto h-4 w-4 rounded-full bg-secondary"
         />
