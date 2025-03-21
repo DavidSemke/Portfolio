@@ -1,7 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid"
 import { useState } from "react"
 import RoundedCarouselCard, { CardData } from "./RoundedCarouselCard"
-import clsx from "clsx"
 
 type RoundedCarouselProps = {
   cardData: CardData[]
@@ -51,6 +50,8 @@ export default function RoundedCarousel({
   // Store x offsets for first quarter left/right of face card.
   const quarterXOffsetRems: number[] = []
   let yOffsetRem = 1
+  let maxXOffsetRem = 0
+  let quarterCardWidthRem = 0
 
   for (
     let halfIndex = 0, 
@@ -75,7 +76,7 @@ export default function RoundedCarousel({
     // For the first quarter left/right of the face card, apply
     // increasing offsets.
     if (halfIndex < quarterXOffsetCurves.length) {
-      quarterXOffsetRems.push(
+      maxXOffsetRem = (
         (widthRem + 1)
         * quarterXOffsetCurves[halfIndex]
         + (
@@ -83,6 +84,8 @@ export default function RoundedCarousel({
           && quarterXOffsetRems[quarterXOffsetRems.length - 1]
         )
       )
+      quarterXOffsetRems.push(maxXOffsetRem)
+      quarterCardWidthRem = widthRem
     }
     // For the second quarter left/right of the face card, apply
     // decreasing offsets.
@@ -144,14 +147,16 @@ export default function RoundedCarousel({
 
   return (
     <div className="flex w-full flex-col items-center gap-4">
-      <div className={clsx(
-        "relative h-60 w-full",
-        { "min-w-72": faceCardWidthRem > 4 }
-      )}>
+      <div
+        style={{
+          minWidth: `${(maxXOffsetRem + (quarterCardWidthRem / 2) + 1) * 2}rem`
+        }}
+        className="relative h-60"
+      >
         {cards}
         <div
           style={{
-            bottom: `${yOffsetRem * 16}px`,
+            bottom: `${yOffsetRem}rem`,
           }}
           className="absolute left-0 right-0 m-auto h-4 w-4 rounded-full bg-secondary"
         />
