@@ -15,8 +15,32 @@ export default function RoundedCarousel({
 }: RoundedCarouselProps) {
   // State faceIndex refers to the index of the face card
   const [faceIndex, setFaceIndex] = useState<number>(0)
-  
+
+  if (!(Number.isInteger(faceCardWidthRem) && Number.isInteger(minCardWidthRem))) {
+    throw new Error('Card widths must be integers.')
+  }
+
+  if (minCardWidthRem < 1) {
+    throw new Error('Min card width cannot be less than 1.')
+  }
+
+  if (faceCardWidthRem < minCardWidthRem) {
+    throw new Error('Face card width cannot be less than min card width.')
+  }
+
+  if (faceCardWidthRem < minCardWidthRem) {
+    throw new Error('Face card width cannot be less than min card width.')
+  }
+
+  if (faceCardWidthRem < minCardWidthRem) {
+    throw new Error('Face card width cannot be less than min card width.')
+  }
+
   const cardCount = cardData.length
+
+  if (cardCount === 0) {
+    return null
+  }
 
   // The half count is the num of cards that can be positioned to the
   // left/right of the face card, ignoring the rear card when the card 
