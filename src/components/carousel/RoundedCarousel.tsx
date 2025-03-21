@@ -44,33 +44,33 @@ export default function RoundedCarousel({
   for (let i = 1; i < quarterCount; i++) {
     quarterXOffsetCurves.push((quarterCount - i) / quarterCount)
   }
-
-  let leftOfFaceIndex = circularIndexDecrement(faceIndex, cardCount)
-  let rightOfFaceIndex = circularIndexIncrement(faceIndex, cardCount)
+  
   const leftOfFaceCards = []
   const rightOfFaceCards = []
-  // Define card width and offsets in rem.
-  let widthRem = faceCardWidthRem - 1
+  
   // Store x offsets for first quarter left/right of face card.
   const quarterXOffsetRems: number[] = []
   let yOffsetRem = 1
-  // Define rate at which y offset increases.
-  let yOffsetIncrement = 4
-  // Define card z-index.
-  // Face card has z-index === cardCount.
-  // Cards immediately left/right have z-index of cardCount - 1.
-  let zIndex = cardCount - 1
-  // halfIndex === num of while loop iterations
-  let halfIndex = 0
 
-  // No more cards are rendered if
-  // 1 - The left and right indexes equal each other.
-  // 2 - The left and right indexes cross each other.
-  // 3 - The card width becomes smaller than the minimum.
-  while (
-    leftOfFaceIndex !== rightOfFaceIndex &&
-    circularIndexIncrement(leftOfFaceIndex, cardCount) !== rightOfFaceIndex &&
-    widthRem >= minCardWidthRem
+  for (
+    let halfIndex = 0, 
+    widthRem = faceCardWidthRem - 1,
+    yOffsetIncrement = 4,
+    zIndex=cardCount - 1,
+    leftOfFaceIndex = circularIndexDecrement(faceIndex, cardCount),
+    rightOfFaceIndex = circularIndexIncrement(faceIndex, cardCount);
+
+    halfIndex < halfCount;
+
+    halfIndex++,
+    widthRem--,
+    yOffsetRem += yOffsetIncrement,
+    yOffsetIncrement = (
+      yOffsetIncrement > 1 ? yOffsetIncrement - 1 : yOffsetIncrement / 2
+    ),
+    zIndex--,
+    leftOfFaceIndex = circularIndexDecrement(leftOfFaceIndex, cardCount),
+    rightOfFaceIndex = circularIndexIncrement(rightOfFaceIndex, cardCount)
   ) {
     // For the first quarter left/right of the face card, apply
     // increasing offsets.
@@ -124,20 +124,6 @@ export default function RoundedCarousel({
         showTitle={showTitle}
       />,
     )
-
-    leftOfFaceIndex = circularIndexDecrement(leftOfFaceIndex, cardCount)
-    rightOfFaceIndex = circularIndexIncrement(rightOfFaceIndex, cardCount)
-    widthRem -= 1
-    yOffsetRem += yOffsetIncrement
-
-    if (yOffsetIncrement > 1) {
-      yOffsetIncrement -= 1
-    } else {
-      yOffsetIncrement /= 2
-    }
-
-    zIndex -= 1
-    halfIndex += 1
   }
 
   const faceCard = cardData[faceIndex]
