@@ -28,14 +28,6 @@ export default function RoundedCarousel({
     throw new Error('Face card width cannot be less than min card width.')
   }
 
-  if (faceCardWidthRem < minCardWidthRem) {
-    throw new Error('Face card width cannot be less than min card width.')
-  }
-
-  if (faceCardWidthRem < minCardWidthRem) {
-    throw new Error('Face card width cannot be less than min card width.')
-  }
-
   const cardCount = cardData.length
 
   if (cardCount === 0) {
