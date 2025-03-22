@@ -62,20 +62,21 @@ export default function RoundedCarousel({
   
   const leftOfFaceCards = []
   const rightOfFaceCards = []
+
+  let leftOfFaceIndex = circularIndexDecrement(faceIndex, cardCount)
+  let rightOfFaceIndex = circularIndexIncrement(faceIndex, cardCount)
   
+  let widthRem = faceCardWidthRem - 1
   // Store x offsets for first quarter left/right of face card.
   const quarterXOffsetRems: number[] = []
   let yOffsetRem = 1
+  let yOffsetIncrement = 4
   let maxXOffsetRem = 0
   let quarterCardWidthRem = 0
+  let zIndex = cardCount - 1
 
   for (
-    let halfIndex = 0, 
-    widthRem = faceCardWidthRem - 1,
-    yOffsetIncrement = 4,
-    zIndex=cardCount - 1,
-    leftOfFaceIndex = circularIndexDecrement(faceIndex, cardCount),
-    rightOfFaceIndex = circularIndexIncrement(faceIndex, cardCount);
+    let halfIndex = 0;
 
     halfIndex < halfCount;
 
@@ -161,6 +162,39 @@ export default function RoundedCarousel({
     ...rightOfFaceCards,
   ]
 
+  const lastYOffsetRem = Math.max(yOffsetRem, faceCardWidthRem)
+
+  // If there is enough width to accommodate a last card
+  if (halfCount * 2 + 2 === cardCount && widthRem > 0) {
+    const card = cardData[rightOfFaceIndex]
+
+    cards.push(
+      <RoundedCarouselCard
+        key={card.title}
+        title={card.title}
+        image={card.image}
+        width={widthRem * 16}
+        offset={{ x: 0, y: -lastYOffsetRem * 16 }}
+        zIndex={zIndex}
+        showTitle={false}
+      />
+    )
+  }
+  else {
+    const lastWidthRem = Math.max(widthRem, 1)
+
+    cards.push(
+      <div
+        style={{
+          width: `${lastWidthRem}rem`,
+          height: `${lastWidthRem}rem`,
+          bottom: `${lastYOffsetRem}rem`,
+        }}
+        className="absolute left-0 right-0 m-auto rounded-full bg-secondary"
+      />
+    )
+  }
+
   return (
     <div className="flex w-full flex-col items-center gap-4">
       <div
@@ -172,13 +206,7 @@ export default function RoundedCarousel({
         }}
         className="relative h-60"
       >
-        {cards}
-        <div
-          style={{
-            bottom: `${Math.max(yOffsetRem, faceCardWidthRem + 4)}rem`,
-          }}
-          className="absolute left-0 right-0 m-auto h-4 w-4 rounded-full bg-secondary"
-        />
+        { cards }
       </div>
       <div className="flex justify-center gap-12">
         <button
