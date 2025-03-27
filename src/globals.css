@@ -1,10 +1,66 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "daisyui";
 
-:root {
-  /* lg refers to the lg breakpt */
-  --navbar-width-lg: 16rem;
+@theme {
+  --animate-typing-full:
+    typingFull 3.5s steps(40), blinkCaret 1s step-end infinite,
+    hideCaretAfter 3.5s step-end forwards;
+  --animate-typing85:
+    typing85 3.5s steps(40) 4s, blinkCaret 1s step-end 4s infinite,
+    hideContentBefore 4s step-end forwards;
+  --animate-fade-in: fadeIn 0.5s forwards;
+
+  @keyframes typingFull {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  @keyframes typing85 {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 85%;
+    }
+  }
+  @keyframes blinkCaret {
+    50% {
+      border-color: transparent;
+    }
+  }
+  @keyframes hideCaretAfter {
+    100% {
+      border-color: transparent;
+    }
+  }
+  @keyframes hideContentBefore {
+    0% {
+      border-color: transparent;
+      width: 0;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@utility link {
+  @apply text-secondary no-underline hover:text-primary;
+}
+
+@layer utilities {
+  :root {
+    /* lg refers to the lg breakpt */
+    --navbar-width-lg: 16rem;
+  }
 }
 
 @layer base {
@@ -37,13 +93,4 @@
   textarea {
     @apply resize-none;
   }
-}
-
-@layer components {
-  .link {
-    @apply text-secondary no-underline hover:text-primary;
-  }
-}
-
-@layer utilities {
 }
