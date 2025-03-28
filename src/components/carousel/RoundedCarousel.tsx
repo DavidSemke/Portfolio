@@ -163,9 +163,9 @@ export default function RoundedCarousel({
   ]
 
   const lastYOffsetRem = Math.max(yOffsetRem, faceCardWidthRem)
+  const carouselIsFull = halfCount * 2 + 2 !== cardCount || widthRem < 1
 
-  // If there is enough width to accommodate a last card
-  if (halfCount * 2 + 2 === cardCount && widthRem > 0) {
+  if (!carouselIsFull) {
     const card = cardData[rightOfFaceIndex]
 
     cards.push(
@@ -180,20 +180,8 @@ export default function RoundedCarousel({
       />
     )
   }
-  else {
-    const lastWidthRem = Math.max(widthRem, 1)
 
-    cards.push(
-      <div
-        style={{
-          width: `${lastWidthRem}rem`,
-          height: `${lastWidthRem}rem`,
-          bottom: `${lastYOffsetRem}rem`,
-        }}
-        className="absolute left-0 right-0 m-auto rounded-full bg-secondary"
-      />
-    )
-  }
+  const lastWidthRem = Math.max(widthRem, minCardWidthRem)
 
   return (
     <div className="flex w-full flex-col items-center gap-4">
@@ -207,6 +195,16 @@ export default function RoundedCarousel({
         className="relative h-60"
       >
         { cards }
+        { carouselIsFull &&
+          <div
+            style={{
+              width: `${lastWidthRem}rem`,
+              height: `${lastWidthRem}rem`,
+              bottom: `${lastYOffsetRem}rem`,
+            }}
+            className="absolute left-0 right-0 m-auto rounded-full bg-secondary"
+          />
+        }
       </div>
       <div className="flex justify-center gap-12">
         <button
