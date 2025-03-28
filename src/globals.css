@@ -2,15 +2,15 @@
 @plugin "daisyui";
 
 @theme {
-  --animate-typing-full:
-    typingFull 3.5s steps(40), blinkCaret 1s step-end infinite,
+  --animate-typing100:
+    typing100 3.5s steps(40), blinkCaret 1s step-end infinite,
     hideCaretAfter 3.5s step-end forwards;
   --animate-typing85:
     typing85 3.5s steps(40) 4s, blinkCaret 1s step-end 4s infinite,
     hideContentBefore 4s step-end forwards;
   --animate-fade-in: fadeIn 0.5s forwards;
 
-  @keyframes typingFull {
+  @keyframes typing100 {
     0% {
       width: 0;
     }
