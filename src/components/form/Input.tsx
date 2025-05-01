@@ -1,4 +1,4 @@
-import { attrsStyleMerge } from "../utils"
+import { mergeAttrStylesWithDefaults } from "../utils"
 import clsx from "clsx"
 
 type InputProps = {
@@ -41,7 +41,7 @@ export default function Input({
       "textarea textarea-bordered textarea-accent": asTextArea,
     }),
   }
-  const styles = attrsStyleMerge(attrs, defaultStyles)
+  const styles = mergeAttrStylesWithDefaults(attrs, defaultStyles)
   label =
     label ??
     name

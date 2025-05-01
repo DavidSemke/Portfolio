@@ -1,17 +1,17 @@
-import clsx from "clsx"
+import { twMerge } from "tailwind-merge"
 
-export function attrsStyleMerge(
+export function mergeAttrStylesWithDefaults(
   attrs: Record<string, Record<string, unknown>>,
-  styles: Record<string, string>,
+  defaultStyles: Record<string, string>,
 ) {
   const mergedStyles: Record<string, string> = {}
 
-  for (const el of Object.keys(styles)) {
+  for (const el of Object.keys(defaultStyles)) {
     const elClasses = attrs[el]?.className
-    mergedStyles[el] = styles[el]
+    mergedStyles[el] = defaultStyles[el]
 
     if (typeof elClasses === "string") {
-      mergedStyles[el] = clsx(mergedStyles[el], elClasses)
+      mergedStyles[el] = twMerge(mergedStyles[el], elClasses)
     }
   }
 
