@@ -16,7 +16,7 @@ export default [
       "DaisyUI",
       "PostgreSQL",
       "Factory Boy",
-      "unittest"
+      "unittest",
     ],
     deployment: "https://flashmode.fly.dev/",
     thumbnails: {
@@ -44,7 +44,7 @@ export default [
       "PostgreSQL",
       "Prisma ORM",
       "Jest",
-      "React Testing Library"
+      "React Testing Library",
     ],
     deployment: "https://memescape.vercel.app/",
     thumbnails: {

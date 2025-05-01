@@ -1,13 +1,11 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui";
 
 @theme {
-  --animate-typing100:
-    typing100 3.5s steps(40), blinkCaret 1s step-end infinite,
+  --animate-typing100: typing100 3.5s steps(40), blinkCaret 1s step-end infinite,
     hideCaretAfter 3.5s step-end forwards;
-  --animate-typing85:
-    typing85 3.5s steps(40) 4s, blinkCaret 1s step-end 4s infinite,
-    hideContentBefore 4s step-end forwards;
+  --animate-typing85: typing85 3.5s steps(40) 4s,
+    blinkCaret 1s step-end 4s infinite, hideContentBefore 4s step-end forwards;
   --animate-fade-in: fadeIn 0.5s forwards;
 
   @keyframes typing100 {
@@ -53,7 +51,7 @@
 }
 
 @utility link {
-  @apply text-secondary no-underline hover:text-primary;
+  @apply text-secondary hover:text-primary no-underline;
 }
 
 @layer utilities {

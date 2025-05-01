@@ -35,13 +35,13 @@ export default function ContactPage() {
 
   if (formState === "SUCCESS") {
     formStateFeedback = (
-      <p className="text-center text-success">
+      <p className="text-success text-center">
         Thank you for reaching out! I will get back to you shortly.
       </p>
     )
   } else if (formState === "ERROR") {
     formStateFeedback = (
-      <p className="text-center text-error">
+      <p className="text-error text-center">
         Something went wrong! Please consider contacting me using my email:
         david@semke.ca.
       </p>

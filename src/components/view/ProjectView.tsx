@@ -14,7 +14,7 @@ export default function ProjectView({
   description,
 }: ProjectViewProps) {
   return (
-    <article className="flex flex-col gap-4 border-b-4 border-accent pb-4">
+    <article className="border-accent flex flex-col gap-4 border-b-4 pb-4">
       <header className="flex flex-col gap-6">
         <h2>{title}</h2>
         <div className="flex flex-wrap gap-4">
@@ -22,7 +22,7 @@ export default function ProjectView({
             return (
               <div
                 key={name}
-                className="rounded-lg bg-info px-4 py-2 text-info-content"
+                className="bg-info text-info-content rounded-lg px-4 py-2"
               >
                 {name}
               </div>
@@ -46,11 +46,11 @@ export default function ProjectView({
         <div className="mx-auto shrink-0 sm:mx-0">
           <img
             src={thumbnails.mobile}
-            className="w-48 border-2 border-accent md:hidden"
+            className="border-accent w-48 border-2 md:hidden"
           />
           <img
             src={thumbnails.desktop}
-            className="hidden w-[40rem] border-2 border-accent md:block"
+            className="border-accent hidden w-[40rem] border-2 md:block"
           />
         </div>
       </div>

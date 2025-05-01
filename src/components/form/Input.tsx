@@ -7,9 +7,9 @@ type InputProps = {
   asTextArea?: boolean
   errors?: string[]
   attrs?: {
-    root?: Record<string, any>
-    label?: Record<string, any>
-    input?: Record<string, any>
+    root?: Record<string, unknown>
+    label?: Record<string, unknown>
+    input?: Record<string, unknown>
   }
 }
 
@@ -20,8 +20,14 @@ export default function Input({
   errors = [],
   attrs = {},
 }: InputProps) {
-  const hide = attrs.input?.type === "hidden"
-  const asRow = ["checkbox", "radio"].includes(attrs.input?.type)
+  let inputType = null
+
+  if (attrs.input && typeof attrs.input.type === "string") {
+    inputType = attrs.input?.type
+  }
+
+  const hide = inputType !== null && inputType === "hidden"
+  const asRow = inputType !== null && ["checkbox", "radio"].includes(inputType)
   const ElementType = asTextArea ? "textarea" : "input"
   const defaultStyles = {
     root: clsx("flex", {
@@ -62,7 +68,7 @@ export default function Input({
         />
       </div>
       {errors.length > 0 && (
-        <ul className="list-inside list-disc text-error">
+        <ul className="text-error list-inside list-disc">
           {errors.map((error) => {
             return <li key={error}>{error}</li>
           })}

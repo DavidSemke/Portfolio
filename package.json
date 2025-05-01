@@ -12,6 +12,10 @@
     "preview": "pnpm build && vite preview",
     "preinstall": "npx only-allow pnpm"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "pnpm lint",
+    "*": "pnpm format"
+  },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.1",
@@ -34,6 +38,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "lint-staged": "^15.5.1",
     "postcss": "^8.5.3",
     "prettier": "3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
